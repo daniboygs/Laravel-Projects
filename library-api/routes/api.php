@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+
 });
 
 Route::group(['prefix' => 'books'], function () {
@@ -23,4 +24,13 @@ Route::group(['prefix' => 'books'], function () {
     Route::put('/{id}','BookController@update');
     Route::delete('/{id}','BookController@destroy');
 });
+
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', 'CategoryController@index');
+    Route::post('/','CategoryController@create');
+    Route::put('/{id}','CategoryController@update');
+    Route::delete('/{id}','CategoryController@destroy');
+});
+
+
 

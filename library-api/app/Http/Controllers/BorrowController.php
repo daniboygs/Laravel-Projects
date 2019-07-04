@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Category;
-
-
-class CategoryController extends Controller
+class BorrowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        //
     }
 
     /**

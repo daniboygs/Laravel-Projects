@@ -1,12 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class book extends Model
+class Book extends Model
 {
-    protected $fillable = ['id_book','name','author','publisher_date','fk_id_category','fk_id_user'];
-    public $incrementing = false;
+    protected $fillable = ['id_book','name','author','publisher_date','availabre','fk_id_category','fk_id_user'];
     protected $primaryKey='id_book';
 }
