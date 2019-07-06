@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->date('published_date');
             $table->boolean('available')->default(1);
             $table->integer('id_category')->unsigned();
-            $table->foreign('id_category')->references('id_category')->on('categories');
+            $table->foreign('id_category')->references('id_category')->on('categories')->nullable()->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }

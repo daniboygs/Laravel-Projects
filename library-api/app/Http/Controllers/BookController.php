@@ -23,10 +23,39 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($request)
+    public function create(Request $request)
     {
-        Book::create($request->all());
-        return  response()->json('OK');
+
+        $this->validate($request, [
+            'id_book' => 'required',
+            'name' => 'required',
+            'author' => 'required',
+            'published_date' => 'required',
+            'available' => 'required',
+            'id_category' => 'required'
+        ]);
+
+        //Book::create($request->all());
+
+
+        $newBook = new Book([
+            'id_book' => $request->id_book,
+            'name' => $request->name,
+            'author' => $request->author,
+            'published_date' => $request->published_date,
+            'available' => $request->available,
+            'id_category' => $request->id_category
+        ]);
+        
+        $newBook->save();
+        
+
+        
+        
+
+        return response()->json('OK');
+
+
     }
 
 
@@ -64,8 +93,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $book=Book::findorFail($id);
-        $book->save();
+        $book=Book::where('id_book', $id)->delete();
         return response()->json('OK');
     }
 }

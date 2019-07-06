@@ -19,6 +19,11 @@ class CategoryController extends Controller
         return Category::all();
     }
 
+    public function getCategory($id)
+    {
+        return Category::where('id_category', $id)->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

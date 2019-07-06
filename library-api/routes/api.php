@@ -27,9 +27,26 @@ Route::group(['prefix' => 'books'], function () {
 
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/', 'CategoryController@index');
+    Route::get('/{id}', 'CategoryController@getCategory');
     Route::post('/','CategoryController@create');
     Route::put('/{id}','CategoryController@update');
     Route::delete('/{id}','CategoryController@destroy');
+});
+
+Route::group(['prefix' => 'borrows'], function () {
+    Route::get('/', 'BorrowController@index');
+    Route::get('/{id}', 'BorrowController@getBorrow');
+    Route::post('/','BorrowController@create');
+    Route::put('/{id}','BorrowController@update');
+    Route::delete('/{id}','BorrowController@destroy');
+});
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/', 'UserController@index');
+    Route::get('/{id}', 'UserController@getUser');
+    Route::post('/','UserController@create');
+    Route::put('/{id}','UserController@update');
+    Route::delete('/{id}','UserController@destroy');
 });
 
 
