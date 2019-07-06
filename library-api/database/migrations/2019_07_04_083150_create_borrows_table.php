@@ -15,10 +15,10 @@ class CreateBorrowsTable extends Migration
     {
         Schema::create('borrows', function (Blueprint $table) {
             $table->increments('id_borrow');
-            $table->string('id_user');
-            $table->string('id_book');
-            $table->foreign('id_user')->references('id_user')->on('users')->nullable()->onUpdate('cascade')->onDelete('set null');
-            $table->foreign('id_book')->references('id_book')->on('books')->nullable()->onUpdate('cascade')->onDelete('set null');
+            $table->string('id_user')->nullable();
+            $table->string('id_book')->nullable();
+            $table->foreign('id_user')->references('id_user')->on('users')->onUpdate('cascade')->onDelete('set null');
+            $table->foreign('id_book')->references('id_book')->on('books')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
